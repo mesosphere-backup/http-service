@@ -1,4 +1,4 @@
-# HTTP Service
+# HTTP Service [![Build Status](https://travis-ci.org/dcos-labs/http-service.svg?branch=master)](https://travis-ci.org/dcos-labs/http-service)
 
 This package wraps connections managed by the `@dcos/connection-manager` package into an Observable.
 
