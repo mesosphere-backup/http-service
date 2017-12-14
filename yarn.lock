@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@dcos/connection-manager@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@dcos/connection-manager/-/connection-manager-0.2.0.tgz#e86b1d46f57b17d11a459fcd814864af9c16c689"
+"@dcos/connection-manager@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@dcos/connection-manager/-/connection-manager-0.2.1.tgz#79377f77f20bb3fba6af1db2643899952c581b5a"
   dependencies:
     "@dcos/connections" "^0.1.0"
     immutable "^3.8.2"
