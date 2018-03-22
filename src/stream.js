@@ -16,6 +16,12 @@ export default function stream(url, options = {}) {
         message: event.target.xhr.statusText
       });
     });
+    connection.addListener(ConnectionEvent.ABORT, function(event) {
+      observer.error({
+        code: event.target.xhr.status,
+        message: event.target.xhr.statusText
+      });
+    });
     connection.addListener(ConnectionEvent.COMPLETE, function() {
       observer.complete();
     });

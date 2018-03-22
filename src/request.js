@@ -13,7 +13,12 @@ export default function request(url, options = {}) {
         message: event.target.xhr.statusText
       });
     });
-
+    connection.addListener(ConnectionEvent.ABORT, function(event) {
+      observer.error({
+        code: event.target.xhr.status,
+        message: event.target.xhr.statusText
+      });
+    });
     connection.addListener(ConnectionEvent.COMPLETE, function(event) {
       observer.next(event.target.response);
       observer.complete();
