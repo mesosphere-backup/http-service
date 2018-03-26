@@ -87,6 +87,27 @@ describe("request", () => {
         message: "Not Found"
       });
     });
+
+    it("emits an error object on connection abort", () => {
+      const observer = {
+        error: jest.fn()
+      };
+
+      request("http://localhost").subscribe(observer);
+
+      const connectionMock = XHRConnection.mock.instances[0];
+      connectionMock.xhr = {
+        status: 0,
+        statusText: "abort"
+      };
+      const connectionEventMock = { target: connectionMock };
+      connectionMock.__emit(ConnectionEvent.ABORT, connectionEventMock);
+
+      expect(observer.error).toHaveBeenCalledWith({
+        code: 0,
+        message: "abort"
+      });
+    });
   });
 
   describe("with no subscribers", () => {
