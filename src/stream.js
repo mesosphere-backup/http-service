@@ -13,13 +13,15 @@ export default function stream(url, options = {}) {
     connection.addListener(ConnectionEvent.ERROR, function(event) {
       observer.error({
         code: event.target.xhr.status,
-        message: event.target.xhr.statusText
+        message: event.target.xhr.statusText,
+        response: event.target.response
       });
     });
     connection.addListener(ConnectionEvent.ABORT, function(event) {
       observer.error({
         code: event.target.xhr.status,
-        message: event.target.xhr.statusText
+        message: event.target.xhr.statusText,
+        response: event.target.response
       });
     });
     connection.addListener(ConnectionEvent.COMPLETE, function() {
