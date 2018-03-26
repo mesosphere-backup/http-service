@@ -8,6 +8,18 @@ jest.mock("@dcos/connections", function() {
     ConnectionEvent: require.requireActual("@dcos/connections").ConnectionEvent,
     XHRConnection: jest.fn(function() {
       this.events = {};
+      Object.defineProperty(this, "response", {
+        get: function() {
+          return this.xhr.response;
+        },
+        set: function(value) {
+          if (!this.xhr) {
+            this.xhr = {};
+          }
+
+          this.xhr.response = value;
+        }
+      });
 
       this.addListener = (type, callback) => {
         if (!this.events[type]) {
@@ -77,14 +89,16 @@ describe("request", () => {
       const connectionMock = XHRConnection.mock.instances[0];
       connectionMock.xhr = {
         status: 404,
-        statusText: "Not Found"
+        statusText: "Not Found",
+        response: "not found"
       };
       const connectionEventMock = { target: connectionMock };
       connectionMock.__emit(ConnectionEvent.ERROR, connectionEventMock);
 
       expect(observer.error).toHaveBeenCalledWith({
         code: 404,
-        message: "Not Found"
+        message: "Not Found",
+        response: "not found"
       });
     });
 
@@ -98,14 +112,16 @@ describe("request", () => {
       const connectionMock = XHRConnection.mock.instances[0];
       connectionMock.xhr = {
         status: 0,
-        statusText: "abort"
+        statusText: "abort",
+        response: ""
       };
       const connectionEventMock = { target: connectionMock };
       connectionMock.__emit(ConnectionEvent.ABORT, connectionEventMock);
 
       expect(observer.error).toHaveBeenCalledWith({
         code: 0,
-        message: "abort"
+        message: "abort",
+        response: ""
       });
     });
   });
