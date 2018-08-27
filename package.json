@@ -8,7 +8,9 @@
   "scripts": {
     "test": "jest src",
     "build": "babel src --out-dir dist",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prerelease": "npm run build",
+    "release": "standard-version"
   },
   "jest": {
     "transform": {
@@ -20,7 +22,8 @@
     "babel-jest": "^23.0.0",
     "babel-preset-env": "^1.6.1",
     "jest": "^23.0.0",
-    "jest-cli": "^23.0.0"
+    "jest-cli": "^23.0.0",
+    "standard-version": "^4.4.0"
   },
   "dependencies": {
     "@dcos/connection-manager": "0.2.1",
