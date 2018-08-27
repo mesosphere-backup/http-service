@@ -22,7 +22,11 @@ export default function request(url, options = {}) {
       });
     });
     connection.addListener(ConnectionEvent.COMPLETE, function(event) {
-      observer.next(event.target.response);
+      observer.next({
+        code: event.target.xhr.status,
+        message: event.target.xhr.statusText,
+        response: event.target.response
+      });
       observer.complete();
     });
 

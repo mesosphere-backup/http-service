@@ -71,12 +71,19 @@ describe("request", () => {
       request("http://localhost").subscribe(observer);
 
       const connectionMock = XHRConnection.mock.instances[0];
+      connectionMock.xhr = { status: 201, statusText: "CREATED" };
       connectionMock.response = "some text";
 
-      const connectionEventMock = { target: connectionMock };
+      const connectionEventMock = {
+        target: connectionMock
+      };
       connectionMock.__emit(ConnectionEvent.COMPLETE, connectionEventMock);
 
-      expect(observer.next).toHaveBeenCalledWith("some text");
+      expect(observer.next).toHaveBeenCalledWith({
+        response: "some text",
+        code: 201,
+        message: "CREATED"
+      });
     });
 
     it("emits an error object on connection error", () => {
