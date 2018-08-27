@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/dcos-labs/http-service/compare/v0.3.0...v1.0.0) (2018-08-27)
+
+
+### Features
+
+* **request:** add status code to next event ([c8bc7b5](https://github.com/dcos-labs/http-service/commit/c8bc7b5))
+
+
+### BREAKING CHANGES
+
+* **request:** the output format of the next event changed. Instead of
+`request(...).subscribe({next(response) {...}})` you can now write
+`request(...).subscribe({next({ code, response }) {...}})`
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/dcos-labs/http-service/compare/v0.2.1...v0.3.0) (2018-03-27)
 
