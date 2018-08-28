@@ -16,8 +16,8 @@ import { request, stream } from "@dcos/http-service";
 request("http://localhost:4200/payload.json")
   .retry(3)
   .subscribe({
-    next: response => console.log(response),
-    error: event => console.log(event),
+    next: ({ code, message, response }) => console.log(code, message, response),
+    error: ({ code, message, response }) => console.error(code, message, response),
     complete: () => console.log("complete")
   });
 
