@@ -1,13 +1,16 @@
 import { XHRConnection, ConnectionEvent } from "@dcos/connections";
 import ConnectionManager from "@dcos/connection-manager";
 import stream from "../stream";
+import request from "../request";
 
 jest.mock("@dcos/connection-manager");
 jest.mock("@dcos/connections", function() {
   return {
     ConnectionEvent: require.requireActual("@dcos/connections").ConnectionEvent,
-    XHRConnection: jest.fn(function() {
+    XHRConnection: jest.fn(function(url) {
       this.events = {};
+
+      Object.defineProperty(this, "url", {value: url});
 
       Object.defineProperty(this, "response", {
         get: function() {
@@ -137,5 +140,51 @@ describe("stream", () => {
 
       expect(ConnectionManager.enqueue).not.toHaveBeenCalled();
     });
+  });
+
+  describe("fingerprint url", () => {
+      const partyLikeIts = new Date(1999,12,31,23,59,59,999).getTime();
+      beforeEach(() => {
+          jest.spyOn(Date, 'now').mockImplementation(() => partyLikeIts);
+      });
+
+      it("adds a unique query parameter - without existing query parameters", () => {
+          const observer = {
+              next: jest.fn()
+          };
+
+          const testUrl = "http://localhost";
+          stream(testUrl).subscribe(observer);
+
+          const connectionMock = XHRConnection.mock.instances[0];
+
+          expect(connectionMock.url).toEqual(`${testUrl}?_ts=${partyLikeIts}`);
+      });
+
+      it("adds a unique query parameter - with existing query parameters", () => {
+          const observer = {
+              next: jest.fn()
+          };
+
+          const testUrl = "http://localhost?someparam";
+          stream(testUrl).subscribe(observer);
+
+          const connectionMock = XHRConnection.mock.instances[0];
+
+          expect(connectionMock.url).toEqual(`${testUrl}&_ts=${partyLikeIts}`);
+      });
+
+      it("does not duplicate timestamp query parameter", () => {
+          const observer = {
+              next: jest.fn()
+          };
+
+          const testUrl = "http://localhost?_ts=123456&someparam";
+          stream(testUrl).subscribe(observer);
+
+          const connectionMock = XHRConnection.mock.instances[0];
+
+          expect(connectionMock.url).toEqual(testUrl);
+      });
   });
 });
