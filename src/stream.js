@@ -3,9 +3,11 @@ import Rx from "rxjs";
 import ConnectionManager from "@dcos/connection-manager";
 import { XHRConnection, ConnectionEvent } from "@dcos/connections";
 
+import { fingerprintUrl } from "./helpers";
+
 export default function stream(url, options = {}) {
   return Rx.Observable.create(function(observer) {
-    const connection = new XHRConnection(url, options);
+    const connection = new XHRConnection(fingerprintUrl(url), options);
 
     connection.addListener(ConnectionEvent.DATA, function(event) {
       observer.next(event.target.response);
