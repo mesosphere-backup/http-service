@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/dcos-labs/http-service/compare/v1.0.0...v1.1.0) (2018-12-18)
+
+
+### Features
+
+* **request:** fingerprint url ([d010d77](https://github.com/dcos-labs/http-service/commit/d010d77))
+* **stream:** fingerprint url ([c40ad86](https://github.com/dcos-labs/http-service/commit/c40ad86))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/dcos-labs/http-service/compare/v0.3.0...v1.0.0) (2018-08-27)
 
