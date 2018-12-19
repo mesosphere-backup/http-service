@@ -1,4 +1,4 @@
-import Rx from "rxjs";
+import { Observable } from "rxjs";
 
 import ConnectionManager from "@dcos/connection-manager";
 import { XHRConnection, ConnectionEvent } from "@dcos/connections";
@@ -6,7 +6,7 @@ import { XHRConnection, ConnectionEvent } from "@dcos/connections";
 import { fingerprintUrl } from "./helpers";
 
 export default function stream(url, options = {}) {
-  return Rx.Observable.create(function(observer) {
+  return Observable.create(function(observer) {
     const connection = new XHRConnection(fingerprintUrl(url), options);
 
     connection.addListener(ConnectionEvent.DATA, function(event) {
