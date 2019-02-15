@@ -2,7 +2,7 @@
   "name": "@dcos/http-service",
   "main": "./dist/index.js",
   "module": "./src/index.js",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "license": "Apache-2.0",
   "repository": "https://github.com/dcos-labs/http-service",
   "scripts": {
@@ -28,6 +28,6 @@
   "dependencies": {
     "@dcos/connection-manager": "0.2.1",
     "@dcos/connections": "0.2.0",
-    "rxjs": "5.4.3"
+    "rxjs": "6.3.3"
   }
 }
