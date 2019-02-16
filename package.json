@@ -26,7 +26,7 @@
     "standard-version": "^4.4.0"
   },
   "dependencies": {
-    "@dcos/connection-manager": "0.2.1",
+    "@dcos/connection-manager": "0.2.2",
     "@dcos/connections": "0.2.0",
     "rxjs": "6.3.3"
   }
