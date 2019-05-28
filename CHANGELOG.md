@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/dcos-labs/http-service/compare/v2.1.0...v2.2.0) (2019-05-28)
+
+
+### Features
+
+* expose reponse type on requests ([a17a94b](https://github.com/dcos-labs/http-service/commit/a17a94b))
+* expose response type on requests ([#28](https://github.com/dcos-labs/http-service/issues/28)) ([4d203ec](https://github.com/dcos-labs/http-service/commit/4d203ec))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/dcos-labs/http-service/compare/v2.0.1...v2.0.2) (2019-02-19)
 
