@@ -12,21 +12,24 @@ export default function request(url, options = {}) {
       observer.error({
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
-        response: event.target.response
+        response: event.target.response,
+        responseType: event.target.responseType
       });
     });
     connection.addListener(ConnectionEvent.ABORT, function(event) {
       observer.error({
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
-        response: event.target.response
+        response: event.target.response,
+        responseType: event.target.responseType
       });
     });
     connection.addListener(ConnectionEvent.COMPLETE, function(event) {
       observer.next({
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
-        response: event.target.response
+        response: event.target.response,
+        responseType: event.target.responseType
       });
       observer.complete();
     });
