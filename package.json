@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@dcos/connection-manager": "0.3.0",
-    "@dcos/connections": "0.3.0",
+    "@dcos/connections": "0.4.0",
     "rxjs": "6.3.3"
   }
 }

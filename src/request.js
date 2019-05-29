@@ -13,7 +13,8 @@ export default function request(url, options = {}) {
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
         response: event.target.response,
-        responseType: event.target.responseType
+        responseType: event.target.responseType,
+        responseHeaders: event.target.responseHeader
       });
     });
     connection.addListener(ConnectionEvent.ABORT, function(event) {
@@ -21,7 +22,8 @@ export default function request(url, options = {}) {
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
         response: event.target.response,
-        responseType: event.target.responseType
+        responseType: event.target.responseType,
+        responseHeaders: {}
       });
     });
     connection.addListener(ConnectionEvent.COMPLETE, function(event) {
@@ -29,7 +31,8 @@ export default function request(url, options = {}) {
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
         response: event.target.response,
-        responseType: event.target.responseType
+        responseType: event.target.responseType,
+        responseHeaders: event.target.responseHeader
       });
       observer.complete();
     });
