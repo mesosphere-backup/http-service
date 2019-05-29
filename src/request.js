@@ -14,7 +14,7 @@ export default function request(url, options = {}) {
         message: event.target.xhr.statusText,
         response: event.target.response,
         responseType: event.target.responseType,
-        responseHeaders: event.target.responseHeader
+        responseHeaders: event.target.responseHeaders
       });
     });
     connection.addListener(ConnectionEvent.ABORT, function(event) {
@@ -32,7 +32,7 @@ export default function request(url, options = {}) {
         message: event.target.xhr.statusText,
         response: event.target.response,
         responseType: event.target.responseType,
-        responseHeaders: event.target.responseHeader
+        responseHeaders: event.target.responseHeaders
       });
       observer.complete();
     });
