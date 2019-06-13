@@ -16,18 +16,18 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
-"@dcos/connection-manager@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@dcos/connection-manager/-/connection-manager-0.3.0.tgz#34791ef296e55456c6946883c9e2c9e3567503cc"
-  integrity sha512-JqqEZ77Hm8jXaiOefTjEWbXDGAvjNPRRDGTWYp53S99mNU++aV1m9MK2na5nfFMQb/nE9/rWLnPN+K9A3Nkjnw==
+"@dcos/connection-manager@0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@dcos/connection-manager/-/connection-manager-0.3.1.tgz#a318688ff9237a2c0a1d8ea8b83ab48322bcfa54"
+  integrity sha512-Lui6YrkK6DmKlD6C+gNb6KAqXmL/w/oFe//i2V1er5S5EdRoUOQJFJRPs5RmqGWpm8Zocw8djF9i/w+B/ZMdWA==
   dependencies:
-    "@dcos/connections" "0.3.0"
+    "@dcos/connections" "0.4.0"
     immutable "^3.8.2"
 
-"@dcos/connections@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@dcos/connections/-/connections-0.3.0.tgz#d8f696518fd2faf0b841ec60edf83f2d626d314e"
-  integrity sha512-svnk0TZnAKNMfrtC0Qrb31B06o0jS7YuUKytTR+pg8HAYLlJy6EUD1EjAeLbF7Zh4HRvMhXS7ER3LGMVYB39Pg==
+"@dcos/connections@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@dcos/connections/-/connections-0.4.0.tgz#89471c657e2b73184be3e1c4ebfc7eff55f44de9"
+  integrity sha512-Ldc1KpH8YnZdQueljQSB06lVp7fEWhThGkMLS/y9ecJLPklhCRWDOzhf3H43qpIgg8QBIoRTspzNMCWBa0dmcg==
 
 JSONStream@^1.0.4:
   version "1.3.5"
