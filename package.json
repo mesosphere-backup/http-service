@@ -7,7 +7,7 @@
   "repository": "https://github.com/dcos-labs/http-service",
   "scripts": {
     "test": "jest src",
-    "build": "babel src --out-dir dist",
+    "build": "tsc",
     "prepublishOnly": "npm run build",
     "prerelease": "npm run build",
     "release": "standard-version"
@@ -23,7 +23,8 @@
     "babel-preset-env": "^1.6.1",
     "jest": "^23.0.0",
     "jest-cli": "^23.0.0",
-    "standard-version": "^4.4.0"
+    "standard-version": "^4.4.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "@dcos/connection-manager": "0.3.1",
