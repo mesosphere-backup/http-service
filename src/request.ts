@@ -1,14 +1,21 @@
 import { Observable } from "rxjs";
-import ConnectionManager from "@dcos/connection-manager";
-import { XHRConnection, ConnectionEvent } from "@dcos/connections";
-
+import ConnectionManager from
+// @ts-ignore typescript-all-in
+"@dcos/connection-manager";
+import { XHRConnection, ConnectionEvent } from
+// @ts-ignore typescript-all-in
+"@dcos/connections";
 import { fingerprintUrl } from "./helpers";
-
-export default function request(url, options = {}) {
-  return Observable.create(function(observer) {
+export default function request(
+// @ts-ignore typescript-all-in
+url, options = {}) {
+  return Observable.create(function (
+  // @ts-ignore typescript-all-in
+  observer) {
     const connection = new XHRConnection(fingerprintUrl(url), options);
-
-    connection.addListener(ConnectionEvent.ERROR, function(event) {
+    connection.addListener(ConnectionEvent.ERROR, function (
+    // @ts-ignore typescript-all-in
+    event) {
       observer.error({
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
@@ -17,7 +24,9 @@ export default function request(url, options = {}) {
         responseHeaders: event.target.responseHeaders
       });
     });
-    connection.addListener(ConnectionEvent.ABORT, function(event) {
+    connection.addListener(ConnectionEvent.ABORT, function (
+    // @ts-ignore typescript-all-in
+    event) {
       observer.error({
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
@@ -26,7 +35,9 @@ export default function request(url, options = {}) {
         responseHeaders: {}
       });
     });
-    connection.addListener(ConnectionEvent.COMPLETE, function(event) {
+    connection.addListener(ConnectionEvent.COMPLETE, function (
+    // @ts-ignore typescript-all-in
+    event) {
       observer.next({
         code: event.target.xhr.status,
         message: event.target.xhr.statusText,
@@ -36,10 +47,8 @@ export default function request(url, options = {}) {
       });
       observer.complete();
     });
+    ConnectionManager.enqueue(connection); // Closing the connection when there are no subscribers left
 
-    ConnectionManager.enqueue(connection);
-
-    // Closing the connection when there are no subscribers left
     return function teardown() {
       ConnectionManager.dequeue(connection);
     };
